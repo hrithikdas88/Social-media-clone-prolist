@@ -113,6 +113,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         </div>
       </div>
       {/* Render the button only for other users */}
+      <div className="button-container">
       {!isSelf && (
         <button
           className={`friend-action ${isFriend ? "remove" : "add"}`}
@@ -121,6 +122,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           {isFriend ? <MdPersonRemoveAlt1 /> : <MdPersonAddAlt1 />}
         </button>
       )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,26 @@
+.profile-page{
+    display: flex;
+    justify-content: space-around;
+
+    .user-widget-container{
+        display: flex;
+        flex-direction: column;
+        //justify-content: space-between;
+        width: 30%;
+
+        .user-profile{
+           height: auto;
+        }
+
+        .friendlist{
+            height: auto;
+        }
+    }
+    .posts-widget-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        margin-top: 2.5rem;
+    }
+}

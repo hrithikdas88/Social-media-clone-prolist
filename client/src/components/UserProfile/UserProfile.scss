@@ -17,7 +17,7 @@ $primaryLight: #0077ff;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding-bottom: 1.1rem;
+    padding-bottom: 25px;
     cursor: pointer;
 
     .user-info {
@@ -61,7 +61,7 @@ $primaryLight: #0077ff;
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    //margin-bottom: 0.5rem;
 
     .location-icon,
     .occupation-icon {
@@ -72,6 +72,7 @@ $primaryLight: #0077ff;
     .location-text,
     .occupation-text {
       color: $medium;
+      
     }
   }
 

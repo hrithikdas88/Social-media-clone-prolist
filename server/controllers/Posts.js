@@ -71,3 +71,30 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+export const deleteUserPost = async (req, res) => {
+  try {
+    const { userId, postId } = req.params;
+
+    console.log('Deleting user post:');
+    console.log('userId:', userId);
+    console.log('postId:', postId);
+
+    // Check if the post belongs to the user
+    const post = await Post.findOne({ _id: postId, userId });
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    await Post.findByIdAndDelete(postId);
+
+
+    // Fetch and return the updated list of user's posts
+    const updatedUserPosts = await Post.find({ userId });
+    res.status(200).json(updatedUserPosts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+

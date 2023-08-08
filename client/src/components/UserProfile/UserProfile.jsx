@@ -11,17 +11,17 @@ import {
 } from "react-icons/md";
 import UserImage from "components/UserImage/UserImage";
 
-const UserProfile = () => {
-  const { _id } = useSelector((state) => state.user);
+const UserProfile = ({ userId, picturePath }) => {
+  //const { _id } = useSelector((state) => state.user);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const token = useSelector((state) => state.token);
-  const { picturePath } = useSelector((state) => state.user);
+  //const { picturePath } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${_id}`, {
+    const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -56,7 +56,7 @@ const UserProfile = () => {
   return (
     <div className="UserWidget">
       {/* FIRST ROW */}
-      <div className="user-row" onClick={() => navigate(`/profile/${_id}`)}>
+      <div className="user-row" onClick={() => navigate(`/profile/${userId}`)}>
         <div className="user-info">
           <div className="user-image">
             <UserImage image={picturePath} />

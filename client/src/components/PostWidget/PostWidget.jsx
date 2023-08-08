@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPost } from "../../store/authSlice";
-import { AiFillHeart,AiOutlineHeart } from "react-icons/ai";
+import { setPost ,setDeletePost  } from "../../store/authSlice";
+import { AiFillHeart,AiOutlineHeart,AiFillDelete } from "react-icons/ai";
 import './PostWidget.scss'
 import Friend from "../Friend/Friend";
 
@@ -24,7 +24,7 @@ const PostWidget = ({
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
 
-
+console.log(postId+"hey");
   const patchLike = async () => {
     const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
       method: "PATCH",
@@ -39,6 +39,24 @@ const PostWidget = ({
 
   };
 
+  const deletePost = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/posts/${postUserId}/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        dispatch(setDeletePost(postId)); // Dispatch the deletePost action
+      } else {
+        console.error('Error deleting post:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+    }
+  };
  
 
   return (
@@ -76,6 +94,13 @@ const PostWidget = ({
           <div className="comment-count">{comments.length}</div>
         </div> */}
 
+{loggedInUserId === postUserId && (
+    <div className="likes-comments-item">
+      <div className="icon-button" onClick={deletePost}>
+        <AiFillDelete color="red" />
+      </div>
+    </div>
+  )}
         <div className="icon-button">
           <span className="share-icon" />
         </div>

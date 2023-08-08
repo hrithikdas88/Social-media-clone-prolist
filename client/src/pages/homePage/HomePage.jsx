@@ -12,13 +12,14 @@ import { useSelector } from "react-redux";
 
 const HomePage = () => {
   
-  const friends = useSelector((state) => state.user.friends);
+  //const friends = useSelector((state) => state.user.friends);
+  const { _id, picturePath } = useSelector((state) => state.user);
  
   return (
     <div className="main-div">
       <div className="profile-message">
         <div className="profile">
-          <UserProfile/>
+          <UserProfile userId={_id} picturePath={picturePath}/>
         </div>
         <div className="message">
           <h1>message</h1>
@@ -36,8 +37,8 @@ const HomePage = () => {
       </div>
       <div className="friend-list">
         <div className="freindlist">
-          <h1>friendlist</h1>
-          <FriendList />
+         
+          <FriendList userId={_id} />
         </div>
       </div>
      

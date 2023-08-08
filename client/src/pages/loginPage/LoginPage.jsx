@@ -37,7 +37,11 @@ const LoginPage = () => {
   
   return (
     <div className='login-page-container'>
-      <LoginForm login={login}/>
+      <div className='design-div'>
+          
+      </div>
+      <div className='loginform-container'> <LoginForm login={login}/></div>
+     
     </div>
   )
 }

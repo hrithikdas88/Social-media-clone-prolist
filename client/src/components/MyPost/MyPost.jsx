@@ -34,6 +34,7 @@ const MyPost = () => {
     });
 
     console.log(response+"hii");
+    console.log(_id);
     const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
