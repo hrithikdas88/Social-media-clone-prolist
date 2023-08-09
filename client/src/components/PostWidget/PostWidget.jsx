@@ -99,9 +99,12 @@ const PostWidget = ({
           <div className="like-count">{likeCount}</div>
         </div>
         <div className="liked-users">
-          {likedUsers.length > 0 && (
-            <div>Liked by: {likedUsers.join(", ")}</div>
-          )}
+        {likedUsers.length > 0 && (
+    <div>
+      Liked by: {likedUsers.slice(0, 3).join(", ")}
+      {likedUsers.length > 3 ? ` ...and ${likedUsers.length - 3} others` : ''}
+    </div>
+  )}
         </div>
 
         {/* <div className="likes-comments-item">

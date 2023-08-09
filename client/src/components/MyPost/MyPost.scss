@@ -9,7 +9,8 @@ $delete-button-color: #ff4500;
 
 
 .main-div {
-    margin-top: 5px;
+    //margin-top: 5px;
+    
 
     .post-widget {
 
@@ -17,6 +18,7 @@ $delete-button-color: #ff4500;
         .image-textarea {
             display: flex;
             padding: 5px;
+            
 
             .post-input {
                 width: 35rem;

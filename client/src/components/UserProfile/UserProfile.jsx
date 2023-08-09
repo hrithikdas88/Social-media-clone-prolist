@@ -48,10 +48,7 @@ const UserProfile = ({ userId, picturePath }) => {
     friends,
   } = user;
 
-  const handleLogout = () => {
-    dispatch(setLogout({ user: null, token: null  }));
-    navigate("/");
-  };
+ 
 
   return (
     <div className="UserWidget">
@@ -129,7 +126,7 @@ const UserProfile = ({ userId, picturePath }) => {
         </div>
         <MdOutlineEdit />
       </div>
-      <button onClick={handleLogout}>logout</button>
+      
     </div>
     
   );

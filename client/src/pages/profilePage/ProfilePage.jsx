@@ -8,6 +8,7 @@ import Feed from "../../components/Feed/Feed";
 import UserProfile from "../../components/UserProfile/UserProfile";
 
 import "./ProfilePage.scss"; // Import the SCSS styles
+import Navbar from "components/Navbar/Navbar";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -30,6 +31,8 @@ const ProfilePage = () => {
   if (!user) return null;
 
   return (
+    <>
+    <Navbar/>
     <div className="profile-page">
       <div className="user-widget-container">
         <div className="user-profile">
@@ -45,6 +48,7 @@ const ProfilePage = () => {
         <Feed userId={userId} isProfile />
       </div>
     </div>
+    </>
   );
 };
 
