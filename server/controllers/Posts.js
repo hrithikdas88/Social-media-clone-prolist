@@ -52,6 +52,11 @@ export const likePost = async (req, res) => {
     const { id } = req.params;
     const { userId } = req.body;
     const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
     const isLiked = post.likes.get(userId);
 
     if (isLiked) {
@@ -66,11 +71,20 @@ export const likePost = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json(updatedPost);
+    const likedUserIds = Array.from(updatedPost.likes.keys());
+
+    // Fetch user details for liked users using the User model
+    const likedUsers = await User.find({ _id: { $in: likedUserIds } });
+
+    res.status(200).json({ post: updatedPost, likedUsers });
   } catch (err) {
-    res.status(404).json({ message: err.message });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
+
+
+
+/* DELETE */
 
 export const deleteUserPost = async (req, res) => {
   try {
@@ -97,4 +111,6 @@ export const deleteUserPost = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+
 
