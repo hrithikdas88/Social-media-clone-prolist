@@ -28,26 +28,26 @@ const ProfilePage = () => {
     getUser();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  console.log(user, "userdata...");
+
   if (!user) return null;
 
   return (
     <>
-    <Navbar/>
-    <div className="profile-page">
-      <div className="user-widget-container">
-        <div className="user-profile">
-          <UserProfile userId={userId} picturePath={user.picturePath} />
+      <Navbar />
+      <div className="profile-page">
+        <div className="user-widget-container">
+          <div className="user-profile">
+            <UserProfile userId={userId} picturePath={user.picturePath} />
+          </div>
+          <div className="friendlist">
+            <FriendList userId={userId} />
+          </div>
         </div>
-        <div className="friendlist">
-        <FriendList userId={userId} />
+        <div className="posts-widget-container">
+          <Feed userId={userId} isProfile />
         </div>
-
-        
       </div>
-      <div className="posts-widget-container">
-        <Feed userId={userId} isProfile />
-      </div>
-    </div>
     </>
   );
 };

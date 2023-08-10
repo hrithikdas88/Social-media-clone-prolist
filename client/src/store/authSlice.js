@@ -4,6 +4,7 @@ const initialState = {
   user: null,
   token: null,
   posts: [],
+  users: [],
 };
 
 export const authSlice = createSlice({
@@ -15,7 +16,8 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
     },
     setLogout: (state) => {
-      state.user = null;
+      // state.user = null;
+      
       state.token = null;
     },
 
@@ -40,6 +42,9 @@ export const authSlice = createSlice({
     setDeletePost: (state, action) => {
       state.posts = state.posts.filter((post) => post._id !== action.payload);
     },
+    setUsers: (state, action) => {
+      state.users = action.payload.users;
+    },
   },
 });
 
@@ -50,5 +55,6 @@ export const {
   setPosts,
   setPost,
   setDeletePost,
+  setUsers,
 } = authSlice.actions;
 export default authSlice.reducer;

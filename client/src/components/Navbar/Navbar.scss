@@ -1,4 +1,27 @@
 // Navbar.scss
+
+.navbar-transition-enter {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.navbar-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.navbar-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 300ms, transform 300ms;
+}
+
 .navbar {
  // position: fixed;
   
@@ -63,9 +86,11 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1rem;
 
     &:hover {
-      background-color: #e0e0e0;
+      background-color: #db5858;
+      color: white;
     }
   }
 }

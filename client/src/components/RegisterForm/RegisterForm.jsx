@@ -6,13 +6,13 @@ import Dropzone from "react-dropzone";
 import "./RegisterForm.scss";
 
 const registerSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().required("required"),
-  location: yup.string().required("required"),
-  occupation: yup.string().required("required"),
-  picture: yup.mixed().required("required"),
+  firstName: yup.string().required("Required"),
+  lastName: yup.string().required("Required"),
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup.string().required("Required"),
+  location: yup.string().required("Required"),
+  occupation: yup.string().required("Required"),
+  picture: yup.mixed().required("Required"),
 });
 
 const initialValuesRegister = {
@@ -25,14 +25,14 @@ const initialValuesRegister = {
   picture: null,
 };
 
-const RegisterForm = ({  register }) => {
+const RegisterForm = ({ register }) => {
   return (
     <Formik
-      onSubmit={register}
       initialValues={initialValuesRegister}
       validationSchema={registerSchema}
+      onSubmit={register}
     >
-      {({ handleSubmit, setFieldValue }) => (
+      {({ handleSubmit, setFieldValue, values }) => (
         <form onSubmit={handleSubmit} className="register-form">
           <div className="form-group">
             <label>First Name</label>
@@ -74,7 +74,7 @@ const RegisterForm = ({  register }) => {
             <label>Picture</label>
             <Dropzone
               className="dropzone"
-              acceptedFiles=".jpg,.jpeg,.png"
+              accept=".jpg,.jpeg,.png"
               multiple={false}
               onDrop={(acceptedFiles) => setFieldValue("picture", acceptedFiles[0])}
             >
@@ -82,10 +82,10 @@ const RegisterForm = ({  register }) => {
                 <div {...getRootProps()} className="dropzone-content">
                   <input {...getInputProps()} />
                   <div className="dropzone-text">
-                    {!initialValuesRegister.picture ? (
+                    {!values.picture ? (
                       <p>Add Picture Here</p>
                     ) : (
-                      <p>{initialValuesRegister.picture.name}</p>
+                      <p>{values.picture.name}</p>
                     )}
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const RegisterForm = ({  register }) => {
           </div>
 
           <div className="form-group">
-            <p >
+            <p>
               Already have an account? Login here.
             </p>
           </div>
@@ -112,4 +112,3 @@ const RegisterForm = ({  register }) => {
 };
 
 export default RegisterForm;
-

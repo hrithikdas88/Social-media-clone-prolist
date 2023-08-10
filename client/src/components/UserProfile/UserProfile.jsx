@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector ,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./UserProfile.scss"; // Import the SCSS file
-import { setLogout } from "store/authSlice";
 import {
   MdManageAccounts,
   MdExplore,
@@ -10,15 +9,15 @@ import {
   MdOutlineEdit,
 } from "react-icons/md";
 import UserImage from "components/UserImage/UserImage";
+import LoadingAnimation from "components/LoadingAnimation/LoadingAnimation";
 
 const UserProfile = ({ userId, picturePath }) => {
-  //const { _id } = useSelector((state) => state.user);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const token = useSelector((state) => state.token);
-  //const { picturePath } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  
+  const [showUserProfile, setShowUserProfile] = useState(true);
+  const [isNavigating, setIsNavigating] = useState(false)
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -28,6 +27,14 @@ const UserProfile = ({ userId, picturePath }) => {
     const data = await response.json();
     console.log(data);
     setUser(data);
+  };
+
+  const handleNavigate = () => {
+    setShowUserProfile(false);
+    setIsNavigating(true);
+    setTimeout(() => {
+      navigate(`/profile/${userId}`);
+    }, 250); // Delay for 0.25 seconds
   };
 
   useEffect(() => {
@@ -48,12 +55,12 @@ const UserProfile = ({ userId, picturePath }) => {
     friends,
   } = user;
 
- 
+
 
   return (
     <div className="UserWidget">
       {/* FIRST ROW */}
-      <div className="user-row" onClick={() => navigate(`/profile/${userId}`)}>
+      <div className="user-row" onClick={handleNavigate}>
         <div className="user-info">
           <div className="user-image">
             <UserImage image={picturePath} />
@@ -64,7 +71,6 @@ const UserProfile = ({ userId, picturePath }) => {
             </h4>
             <p className="user-friends">{friends.length} friends</p>
           </div>
-          
         </div>
       </div>
 
@@ -126,9 +132,7 @@ const UserProfile = ({ userId, picturePath }) => {
         </div>
         <MdOutlineEdit />
       </div>
-      
     </div>
-    
   );
 };
 
