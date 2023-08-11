@@ -37,7 +37,7 @@
     .addpost-feed {
       display: flex;
       flex-direction: column;
-      width: 40%;
+      width: 120%;
       height: auto;
      // background-color:  #FAF3F0;
       padding: 20px;
@@ -49,11 +49,11 @@
     .friend-list {
       display: flex;
       flex-direction: column;
-      width: 30%;
+      width: 80%;
       height: auto;
-      margin-left: 10px;
+      margin-left: 5px;
       //background-color:  #FAF3F0;
-      padding: 20px;
+      padding-left:15px;
       // border-radius: 8px;
       // box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
      // box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -62,6 +62,11 @@
     .people-you-know{
       display: flex;
       flex-direction: column;
+      margin-left: 25px;
+    }
+
+    .friendlist{
+      
     }
   }
   

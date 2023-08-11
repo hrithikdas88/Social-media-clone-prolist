@@ -1,12 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFriends } from "../../store/authSlice";
-import UserImage from "components/UserImage/UserImage";
-import { MdPersonRemoveAlt1, MdPersonAddAlt1 } from "react-icons/md";
-import "./Friend.scss";
+import { setFriends } from "../store/authSlice";
 
-const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
+const useFriendInteractionLogic = ({ friendId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loggedInUserId = useSelector((state) => state.user?._id);
@@ -37,30 +33,12 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     navigate(0);
   };
 
-  return (
-    <div className="friend-container">
-      <div className="friend-info" onClick={handleClick}>
-        <div className="user-image">
-          <UserImage image={userPicturePath} size="55px" />
-        </div>
-        <div className="user-details">
-          <h5>{name}</h5>
-          <p>{subtitle}</p>
-        </div>
-      </div>
-      {/* Render the button only for other users */}
-      <div className="button-container">
-        {!isSelf && (
-          <button
-            className={`friend-action ${isFriend ? "remove" : "add"}`}
-            onClick={patchFriend}
-          >
-            {isFriend ? <MdPersonRemoveAlt1 /> : <MdPersonAddAlt1 />}
-          </button>
-        )}
-      </div>
-    </div>
-  );
+  return {
+    isFriend,
+    isSelf,
+    patchFriend,
+    handleClick,
+  };
 };
 
-export default Friend;
+export default useFriendInteractionLogic;

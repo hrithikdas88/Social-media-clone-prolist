@@ -1,14 +1,13 @@
-import React from "react";
-import usePostFeed from "../../CustomHooks/usePostFeed"; // Update the path to your custom hook
+import usePostFeed from "./usePostFeed";
 import PostWidget from "../PostWidget/PostWidget";
-import './Feed.scss';
+import "./Feed.scss";
 
 const Feed = ({ userId, isProfile = false }) => {
-  const posts = usePostFeed(userId, isProfile);
+  const posts = usePostFeed({ userId, isProfile });
 
   return (
     <>
-      {posts.map(
+      {posts?.map(
         ({
           _id,
           userId,
@@ -32,7 +31,6 @@ const Feed = ({ userId, isProfile = false }) => {
             userPicturePath={userPicturePath}
             likes={likes}
             comments={comments}
-            isProfile={isProfile}
           />
         )
       )}
@@ -41,4 +39,3 @@ const Feed = ({ userId, isProfile = false }) => {
 };
 
 export default Feed;
-
