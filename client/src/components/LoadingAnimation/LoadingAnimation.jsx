@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoadingAnimation.scss"; // Add your own styles for the loading animation
+import "./LoadingAnimation.scss"; 
 
 const LoadingAnimation = () => {
   return (

@@ -1,8 +1,9 @@
+// LoginForm.js
 import React from "react";
-import { Formik, Field, ErrorMessage } from "formik";
-import * as yup from "yup";
-import "./LoginForm.scss";
 import { Link } from "react-router-dom";
+import useLoginForm from "./useLoginForm";
+import * as yup from "yup";
+import "./LoginForm.scss"
 
 const loginSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),
@@ -15,6 +16,8 @@ const initialValuesLogin = {
 };
 
 const LoginForm = ({ setPageType, login }) => {
+  const form = useLoginForm(initialValuesLogin, loginSchema, login);
+
   return (
     <>
       <link
@@ -27,69 +30,7 @@ const LoginForm = ({ setPageType, login }) => {
             <img src="https://i.imgur.com/zqpwkLQ.png" alt="Logo" />
           </div>
           <div className="l-part">
-            <Formik
-              onSubmit={login}
-              initialValues={initialValuesLogin}
-              validationSchema={loginSchema}
-            >
-              {({
-                handleSubmit,
-                handleChange,
-                values,
-                errors,
-                touched,
-                handleBlur,
-                resetForm,
-              }) => (
-                <form onSubmit={handleSubmit}>
-                  <div className="email">
-                    {/* <label htmlFor="email">Email</label> */}
-                    <Field
-                      type="text"
-                      id="email"
-                      name="email"
-                      placeholder="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={touched.email && errors.email ? "error" : ""}
-                    />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="errorMessage"
-                    />
-                  </div>
-                  <div className="password">
-                    {/* <label htmlFor="password">Password</label> */}
-                    <Field
-                      type="password"
-                      id="password"
-                      name="password"
-                      placeholder="Password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={
-                        touched.password && errors.password ? "error" : ""
-                      }
-                    />
-                    {/* <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="errorMessage"
-                    /> */}
-                  </div>
-
-                  {/* BUTTONS */}
-                  <div>
-                    <button className="btn" type="submit">
-                      LOGIN
-                    </button>
-                  </div>
-                </form>
-              )}
-            </Formik>
+            {form}
           </div>
         </div>
         <div className="sub-content">

@@ -9,6 +9,13 @@
       font-size: 20px;
       margin-bottom: 10px;
     }
+
+    .no-connections-message {
+      color: #999;
+      font-style: italic;
+      text-align: center;
+      padding: 10px;
+    }
   
     .friend-list {
       display: grid;

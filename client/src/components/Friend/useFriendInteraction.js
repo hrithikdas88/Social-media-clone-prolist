@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setFriends } from "../store/authSlice";
+import { setFriends } from "../../store/authSlice";
 
-const useFriendInteractionLogic = ({ friendId }) => {
+const useFriendInteraction = ({ friendId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loggedInUserId = useSelector((state) => state.user?._id);
@@ -11,7 +11,7 @@ const useFriendInteractionLogic = ({ friendId }) => {
 
   const isFriend =
     Array.isArray(friends) && friends.find((friend) => friend._id === friendId);
-  const isSelf = loggedInUserId === friendId; // Check if the friendId matches the logged-in user's _id
+  const isSelf = loggedInUserId === friendId;
 
   const patchFriend = async () => {
     const response = await fetch(
@@ -28,17 +28,17 @@ const useFriendInteractionLogic = ({ friendId }) => {
     dispatch(setFriends({ friends: data }));
   };
 
-  const handleClick = () => {
+  const navigateToProfile = () => {
     navigate(`/profile/${friendId}`);
     navigate(0);
   };
 
   return {
-    isFriend,
     isSelf,
+    isFriend,
     patchFriend,
-    handleClick,
+    navigateToProfile,
   };
 };
 
-export default useFriendInteractionLogic;
+export default useFriendInteraction;
