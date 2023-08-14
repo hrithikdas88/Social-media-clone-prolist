@@ -21,7 +21,7 @@ const Navbar = () => {
       <CSSTransition in={showNavbar} timeout={300} classNames="navbar-transition">
         <div className="navbar">
           <div className="logo" onClick={handleNavigate}>
-            BeyondPosts
+            PostBeyond
           </div>
 
           <div className="icon-buttons">

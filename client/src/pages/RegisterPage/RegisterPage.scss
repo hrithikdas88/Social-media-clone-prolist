@@ -1,0 +1,25 @@
+.mainpage{
+    display: flex;
+    justify-content: space-between;
+
+
+
+    .conatiner{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+
+    }
+
+    .image-conatiner{
+        flex: 1;
+        background-image: url('https://www.postbeyond.com/wp-content/uploads/2020/09/background-image-min.png');
+        background-size: cover;
+        background-position: center;
+        width: 60%;
+        height: 100vh;
+
+        
+       
+    }
+}

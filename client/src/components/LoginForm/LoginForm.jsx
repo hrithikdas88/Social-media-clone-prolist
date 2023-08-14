@@ -15,19 +15,16 @@ const initialValuesLogin = {
   password: "",
 };
 
-const LoginForm = ({ setPageType, login }) => {
+const LoginForm = ({  login }) => {
   const form = useLoginForm(initialValuesLogin, loginSchema, login);
 
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono"
-        rel="stylesheet"
-      />
+    
       <div id="wrapper">
         <div className="main-content">
           <div className="header">
-            <img src="https://i.imgur.com/zqpwkLQ.png" alt="Logo" />
+            <img src="https://www.postbeyond.com/wp-content/uploads/2018/04/pb-featured-min.jpg" alt="Logo" />
           </div>
           <div className="l-part">
             {form}

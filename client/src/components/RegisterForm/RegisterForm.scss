@@ -1,78 +1,125 @@
-.register-form {
-    max-width: 400px;
-    margin: 0 auto;
-  
-    .form-group {
-      margin-bottom: 20px;
-      
-      label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-  
-      .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        transition: border-color 0.3s ease;
-  
-        &:focus {
-          border-color: #007bff;
-          outline: none;
-        }
-      }
-  
-      .error-message {
-        color: red;
-        margin-top: 5px;
-      }
-  
-      .dropzone {
-        border: 2px dashed #ccc;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-  
-        &.dropzone-content {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100px;
-  
-          & .dropzone-text {
-            p {
-              margin: 0;
-            }
-          }
-        }
-      }
-    }
-  
-    .btn-primary {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-  
+.registration-container {
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .registration-heading {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    font-size: 2em;
+    margin: 0.5em 0;
+
+    .login-link-text {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+
       &:hover {
-        background-color: #0056b3;
-      }
-    }
-  
-    p {
-      margin: 0;
-      text-align: center;
-      color: #888;
-      cursor: pointer;
-  
-      &:hover {
-        color: #555;
+        color: #207ab5;
       }
     }
   }
-  
+
+  .register-form {
+    .form-group {
+      margin-bottom: 2rem;
+
+      label {
+        display: block;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      input,
+      textarea {
+        width: 85%;
+        height: 2rem;
+        border: none;
+        border-bottom: 2px solid #3498db;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: #333;
+        background-color: #f5f5f5;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #ff9900;
+          background-color: #fff;
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .input-description {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 0.3rem;
+      }
+
+      .error-message {
+        color: #d9534f;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+      }
+    }
+
+    .dropzone {
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: border-color 0.3s ease-in-out;
+
+      &:hover {
+        border-color: #007bff;
+      }
+
+      &.active {
+        border-color: #28a745;
+      }
+
+      .dropzone-content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .dropzone-text {
+        font-size: 1rem;
+        color: #555;
+        margin-top: 10px;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+
+      &.btn-primary {
+        background-color: #007bff;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+}

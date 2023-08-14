@@ -1,7 +1,4 @@
-// useLoginForm.js
 import React from "react";
-
-import * as yup from "yup";
 import { Formik, Field, ErrorMessage } from "formik";
 
 const useLoginForm = (initialValues, validationSchema, onSubmit) => {
@@ -25,19 +22,19 @@ const useLoginForm = (initialValues, validationSchema, onSubmit) => {
               type="text"
               id="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
               className={touched.email && errors.email ? "error" : ""}
             />
-            <ErrorMessage
+            {/* <ErrorMessage
               name="email"
               component="div"
               className="errorMessage"
-            />
+            /> */}
           </div>
-          <div className="password">
+          <div className="Password">
             <Field
               type="password"
               id="password"
@@ -46,9 +43,7 @@ const useLoginForm = (initialValues, validationSchema, onSubmit) => {
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
-              className={
-                touched.password && errors.password ? "error" : ""
-              }
+              className={touched.password && errors.password ? "error" : ""}
             />
           </div>
           <div>

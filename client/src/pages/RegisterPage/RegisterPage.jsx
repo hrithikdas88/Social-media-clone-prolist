@@ -1,43 +1,21 @@
-import RegisterForm from "components/RegisterForm/RegisterForm";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import './RegisterPage.scss'
+import RegisterForm from "components/RegisterForm/RegisterForm";
+import useRegister from "./useRegister";
+import "./RegisterPage.scss";
 
 const RegisterPage = () => {
-  const navigate = useNavigate();
-  const register = async (values, onSubmitProps) => {
-    const formData = new FormData();
-    for (let value in values) {
-      formData.append(value, values[value]);
-    }
-    formData.append("picturePath", values.picture.name);
+  const register = useRegister();
 
-    const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-    const savedUser = await savedUserResponse.json();
-    onSubmitProps.resetForm();
-
-    if (savedUser) {
-      navigate("/");
-    }
-  };
   return (
     <div className="mainpage">
-      <div className="image-conatiner">
-
-
-      </div>
       <div className="conatiner">
         <div className="loginpage">
-        <RegisterForm register={register} />
+          <RegisterForm register={register} />
         </div>
       </div>
-     
+      <div className="image-conatiner">
+        <img src="https://www.postbeyond.com/wp-content/uploads/2020/09/background-image-min.png" alt="" />
+      </div>
     </div>
   );
 };

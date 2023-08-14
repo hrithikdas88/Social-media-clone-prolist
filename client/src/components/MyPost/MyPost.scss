@@ -17,11 +17,12 @@ $delete-button-color: #ff4500;
         //border: 1px solid rgba(34, 8, 8, 0.685);
         .image-textarea {
             display: flex;
-            padding: 5px;
+            //padding: 5px;
+            
             
 
             .post-input {
-                width: 35rem;
+                width: 43rem;
                 margin-left: 5px;
                 background-color: $textarea-bg-color;
                 border: 1px solid $textarea-border-color;

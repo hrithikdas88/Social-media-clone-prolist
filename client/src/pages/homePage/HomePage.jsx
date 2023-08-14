@@ -4,13 +4,13 @@ import UserProfile from "components/UserProfile/UserProfile";
 import Feed from "components/Feed/Feed";
 import MyPost from "components/MyPost/MyPost";
 import FriendList from "components/FriendList/FriendList";
-import { useSelector } from "react-redux";
 import Navbar from "components/Navbar/Navbar";
 import MessageInbox from "components/MessageInbox/MessageInbox";
 import UserList from "components/UserList/UserList";
+import useHomePageData from "./useHomePageData";
 
 const HomePage = () => {
-  const { _id, picturePath } = useSelector((state) => state.user);
+  const { user } = useHomePageData();
 
   return (
     <div>
@@ -18,7 +18,7 @@ const HomePage = () => {
       <div className="main-div">
         <div className="profile-message">
           <div className="profile">
-            <UserProfile userId={_id} picturePath={picturePath} />
+            <UserProfile userId={user._id} picturePath={user.picturePath} />
           </div>
           <div className="message">
             <MessageInbox />
@@ -34,11 +34,11 @@ const HomePage = () => {
         </div>
         <div className="friend-list">
           <div className="freindlist">
-            <FriendList userId={_id} />
+            <FriendList userId={user._id} />
           </div>
           <div className="people-you-know">
             <h2>People You May Know</h2>
-            <UserList  picturePath={picturePath}/>
+            <UserList picturePath={user.picturePath} />
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import usePostFeed from "./usePostFeed";
 import PostWidget from "../PostWidget/PostWidget";
 import "./Feed.scss";
@@ -5,9 +6,13 @@ import "./Feed.scss";
 const Feed = ({ userId, isProfile = false }) => {
   const posts = usePostFeed({ userId, isProfile });
 
+  if (!posts || posts.length === 0) {
+    return <p>No posts to display</p>;
+  }
+
   return (
     <>
-      {posts?.map(
+      {posts.map(
         ({
           _id,
           userId,
