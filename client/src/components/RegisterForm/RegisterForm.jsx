@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import "./RegisterForm.scss"
 import useRegisterForm from "./useRegisterForm";
+import { ToastContainer } from "react-toastify";
 
 const RegisterForm = ({ register }) => {
   const {
@@ -127,6 +128,7 @@ const RegisterForm = ({ register }) => {
           </form>
         )}
       </Formik>
+      <ToastContainer/>
     </div>
   );
 };

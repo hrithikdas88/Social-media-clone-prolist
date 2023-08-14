@@ -1,11 +1,10 @@
-
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { toast } from "react-toastify";
+
 
 const useRegisterForm = (register) => {
-
   const navigate = useNavigate();
-
 
   const registerSchema = yup.object().shape({
     firstName: yup.string().required("Required"),
@@ -30,11 +29,11 @@ const useRegisterForm = (register) => {
   const handleSubmit = async (values) => {
     try {
       await register(values);
-      // Registration successful, navigate to login page
-      navigate("/"); // Replace "/login" with the actual URL of your login page
+      toast.success("Registration successful!");
+     
     } catch (error) {
-      // Handle registration error
       console.error("Registration failed:", error);
+      toast.error("Registration failed. Please try again.");
     }
   };
 

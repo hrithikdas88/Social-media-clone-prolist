@@ -3,8 +3,6 @@
     font-weight: bold;
     cursor: pointer;
     color: black;
-    // margin-left: 5rem;
-    // margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,20 +23,24 @@
     .user-widget-container {
         display: flex;
         flex-direction: column;
-        //justify-content: space-between;
+
         width: 30%;
         position: sticky;
         top: 60px;
-        /* Adjust for top bar height */
-        height: calc(100vh - 60px);
-        /* Adjust for top bar height */
-        overflow-y: auto; /* Enable scrolling if content overflows */
-    scrollbar-width: none; /* Hide the scrollbar on Firefox */
-    -ms-overflow-style: none; /* Hide the scrollbar on IE and Edge */
 
-    &::-webkit-scrollbar {
-      width: 0; /* Hide the scrollbar on Chrome, Safari, and newer Edge */
-    }
+        height: calc(100vh - 60px);
+
+        overflow-y: auto;
+
+        scrollbar-width: none;
+
+        -ms-overflow-style: none;
+
+
+        &::-webkit-scrollbar {
+            width: 0;
+
+        }
 
 
 
@@ -53,7 +55,7 @@
             height: auto;
             border-radius: 8px;
             //box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-
+            
         }
     }
 
@@ -65,15 +67,19 @@
         //margin-top: 1rem;
         border-radius: 8px;
         //box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-       
-        /* Enable scrolling if content overflows */
-        height: calc(100vh - 60px);
-        overflow-y: auto; /* Enable scrolling if content overflows */
-    scrollbar-width: none; /* Hide the scrollbar on Firefox */
-    -ms-overflow-style: none; /* Hide the scrollbar on IE and Edge */
 
-    &::-webkit-scrollbar {
-      width: 0; /* Hide the scrollbar on Chrome, Safari, and newer Edge */
-    }
+
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+
+        scrollbar-width: none;
+
+        -ms-overflow-style: none;
+
+
+        &::-webkit-scrollbar {
+            width: 0;
+
+        }
     }
 }

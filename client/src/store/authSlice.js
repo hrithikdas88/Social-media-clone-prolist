@@ -30,11 +30,11 @@ export const authSlice = createSlice({
     },
 
     setPosts: (state, action) => {
-      console.log(action.payload+"jhghfjhflhgfhlf");
+      console.log(action.payload);
       state.posts = action.payload.posts;
     },
     setUserPosts: (state, action) => {
-      console.log(action.payload+"jhghfjhflhgfhlf");
+      console.log(action.payload);
        state.posts = [...action.payload];
     },
     setPost: (state, action) => {
